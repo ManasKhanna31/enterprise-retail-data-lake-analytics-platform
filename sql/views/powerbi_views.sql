@@ -1,0 +1,1 @@
+CREATE OR REPLACE VIEW vw_monthly_sales AS SELECT d.year, d.month, s.state, SUM(f.revenue) revenue, SUM(f.profit) profit, SUM(f.quantity) units FROM fact_sales f JOIN dim_date d ON d.date_key=f.date_key JOIN dim_store s ON s.store_key=f.store_key GROUP BY d.year, d.month, s.state;

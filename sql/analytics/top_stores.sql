@@ -1,0 +1,1 @@
+SELECT s.store_name, SUM(f.revenue) AS revenue, SUM(f.profit) AS profit FROM fact_sales f JOIN dim_store s ON s.store_key = f.store_key GROUP BY s.store_name HAVING SUM(f.revenue) > 0 ORDER BY revenue DESC;

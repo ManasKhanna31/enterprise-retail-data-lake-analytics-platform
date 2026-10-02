@@ -1,0 +1,6 @@
+customer_id,name,email,city,state,signup_date
+1,Customer 1,customer1@example.com,Bengaluru,KA,2026-01-01
+2,Customer 2,customer2@example.com,Bengaluru,KA,2026-01-01
+3,Customer 3,customer3@example.com,Bengaluru,KA,2026-01-01
+4,Customer 4,customer4@example.com,Bengaluru,KA,2026-01-01
+5,Customer 5,customer5@example.com,Bengaluru,KA,2026-01-01

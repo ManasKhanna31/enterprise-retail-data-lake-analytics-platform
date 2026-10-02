@@ -1,0 +1,2 @@
+return_id,order_id,product_id,return_date,quantity,reason
+1,2,3,2026-01-20,1,damaged
