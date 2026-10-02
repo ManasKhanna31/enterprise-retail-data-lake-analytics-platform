@@ -10,7 +10,10 @@ def ingest_files(source_dir: str, lake_dir: str) -> dict[str, list[dict]]:
         with path.open(encoding="utf-8", newline="") as f: rows = list(csv.DictReader(f))
         enriched = [{**row, "_ingested_at": datetime.now(timezone.utc).isoformat(), "_source": path.name} for row in rows]
         result[path.stem] = enriched
-        (bronze / f"{path.stem}.json").write_text(json.dumps(enriched, indent=2), encoding="utf-8")
+        (bronze / f"{path.stem}.json").write_text(
+    "\n".join(json.dumps(row) for row in enriched),
+    encoding="utf-8",
+)
         unique = list({tuple(sorted(row.items())): row for row in enriched}.values())
         (silver / f"{path.stem}.json").write_text(json.dumps(unique, indent=2), encoding="utf-8")
     return result

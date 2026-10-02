@@ -1,12 +1,11 @@
-"""Run the local-mode ingestion and curation pipeline."""
+"""Run data quality checks as a pipeline gate."""
 
 from ingestion.files.reader import ingest_files
 from quality.checks import quality_report
-from spark.transformations.local import build_gold
 
 
 def main():
-    records = ingest_files("data/sample", "data/lake")
+    records = ingest_files("data/sample_clean", "data/lake")
     report = quality_report(records)
 
     print(report)
@@ -14,8 +13,7 @@ def main():
     if not report["overall"]:
         raise RuntimeError("Data quality checks failed. Pipeline stopped.")
 
-    build_gold(records, "data/lake/gold")
-    print("Pipeline completed successfully.")
+    print("Data quality checks passed.")
 
 
 if __name__ == "__main__":

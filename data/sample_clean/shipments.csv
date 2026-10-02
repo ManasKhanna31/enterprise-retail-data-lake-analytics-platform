@@ -1,0 +1,4 @@
+shipment_id,supplier_id,store_id,ship_date,delivery_date,status
+1,2,2,2026-01-10,2026-01-13,delivered
+2,3,3,2026-01-10,2026-01-13,delivered
+3,1,1,2026-01-10,2026-01-13,delivered

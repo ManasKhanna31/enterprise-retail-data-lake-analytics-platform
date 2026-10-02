@@ -137,6 +137,9 @@ def load_dimensions(connection):
 
 
 def load_fact_sales(connection):
+    with connection.cursor() as cursor:
+        cursor.execute("TRUNCATE TABLE fact_sales RESTART IDENTITY;")
+    connection.commit()
     orders = {
         row["order_id"]: row
         for row in read_csv("orders.csv")
